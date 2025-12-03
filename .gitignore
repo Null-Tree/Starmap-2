@@ -1,0 +1,10 @@
+/render/exports
+
+render\static\data\binaries\all_stars
+render\static\data\csv\million.csv
+render\static\data\csv\million_wgal.csv
+
+*\__pycache__
+render/static/data/csv/million.csv
+render/static/data/csv/million_wgal.csv
+render/static/data/binaries/all_stars

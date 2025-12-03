@@ -1,0 +1,1170 @@
+{
+    "id": "boo",
+    "name": "Boorong",
+    "region": "Australia",
+    "source": [
+        "Stellarium"
+    ],
+    "description": "constellations of boorong",
+    "constellations": [
+        {
+            "id": "Wjl",
+            "names": [
+                {
+                    "english": "Long-necked tortoise",
+                    "native": "Wanjel"
+                }
+            ],
+            "lines": [
+                [
+                    "* kap Gem",
+                    "* phi Gem"
+                ],
+                [
+                    "* kap Gem",
+                    "* ups Gem"
+                ],
+                [
+                    "* phi Gem",
+                    "* sig Gem"
+                ],
+                [
+                    "* ups Gem",
+                    "* sig Gem"
+                ],
+                [
+                    "* sig Gem",
+                    "* 64 Gem"
+                ],
+                [
+                    "* 64 Gem",
+                    "* 59 Gem"
+                ]
+            ]
+        },
+        {
+            "id": "Yur",
+            "names": [
+                {
+                    "english": "Fan-tailed cockatoo",
+                    "native": "Yurree"
+                }
+            ],
+            "lines": [
+                [
+                    "* rho Gem",
+                    "* alf Gem A"
+                ],
+                [
+                    "HD 60318",
+                    "* alf Gem A"
+                ],
+                [
+                    "* alf Gem A",
+                    "* 70 Gem"
+                ],
+                [
+                    "* alf Gem A",
+                    "HD 63589"
+                ],
+                [
+                    "* 70 Gem",
+                    "* omi Gem"
+                ],
+                [
+                    "* omi Gem",
+                    "HD 61859"
+                ],
+                [
+                    "HD 61859",
+                    "* pi. Gem"
+                ],
+                [
+                    "* pi. Gem",
+                    "HD 63589"
+                ]
+            ]
+        },
+        {
+            "id": "Kul",
+            "names": [
+                {
+                    "english": "Two teenage boys",
+                    "native": "Kulkunbulla"
+                }
+            ],
+            "lines": [
+                [
+                    "* ome Ori",
+                    "V* V1149 Ori"
+                ],
+                [
+                    "V* V1149 Ori",
+                    "HD 37958"
+                ],
+                [
+                    "HD 37958",
+                    "* b Ori"
+                ],
+                [
+                    "* b Ori",
+                    "HD 37788"
+                ],
+                [
+                    "HD 37788",
+                    "* zet Ori A"
+                ],
+                [
+                    "HD 37788",
+                    "HD 38529b"
+                ],
+                [
+                    "HD 38529b",
+                    "BD+01 1148"
+                ],
+                [
+                    "BD+01 1148",
+                    "* 56 Ori"
+                ],
+                [
+                    "* del Ori B",
+                    "* 31 Ori"
+                ],
+                [
+                    "* zet Ori A",
+                    "* sig Ori"
+                ],
+                [
+                    "HD 36954",
+                    "HD 36935"
+                ],
+                [
+                    "HD 36935",
+                    "HD 36898"
+                ],
+                [
+                    "HD 36898",
+                    "HD 36840"
+                ],
+                [
+                    "HD 36840",
+                    "HD 36558"
+                ],
+                [
+                    "HD 36558",
+                    "* del Ori B"
+                ],
+                [
+                    "HD 36840",
+                    "HD 37788"
+                ],
+                [
+                    "HD 36954",
+                    "HD 36882"
+                ],
+                [
+                    "HD 36882",
+                    "HD 36779"
+                ],
+                [
+                    "HD 36779",
+                    "V* VV Ori"
+                ],
+                [
+                    "V* VV Ori",
+                    "HD 36591"
+                ],
+                [
+                    "HD 36591",
+                    "HD 36646B"
+                ],
+                [
+                    "HD 36646B",
+                    "HD 36811"
+                ],
+                [
+                    "HD 36811",
+                    "HD 37149"
+                ],
+                [
+                    "HD 37149",
+                    "HD 37321B"
+                ],
+                [
+                    "HD 37321B",
+                    "HD 37397"
+                ],
+                [
+                    "HD 37397",
+                    "* zet Ori A"
+                ]
+            ]
+        },
+        {
+            "id": "Lnk",
+            "names": [
+                {
+                    "english": "Girls",
+                    "native": "Lamankurrk"
+                }
+            ],
+            "lines": [
+                [
+                    "HD 23568",
+                    "* 21 Tau"
+                ],
+                [
+                    "* 21 Tau",
+                    "* q Tau"
+                ],
+                [
+                    "* q Tau",
+                    "* 16 Tau"
+                ],
+                [
+                    "* 16 Tau",
+                    "* 17 Tau"
+                ],
+                [
+                    "* 17 Tau",
+                    "* 23 Tau"
+                ],
+                [
+                    "* 23 Tau",
+                    "* eta Tau"
+                ],
+                [
+                    "* eta Tau",
+                    "* 28 Tau"
+                ],
+                [
+                    "* 28 Tau",
+                    "* 27 Tau B"
+                ],
+                [
+                    "* 27 Tau B",
+                    "HD 23923"
+                ],
+                [
+                    "HD 23923",
+                    "HD 23753"
+                ]
+            ]
+        },
+        {
+            "id": "Pur",
+            "names": [
+                {
+                    "english": "Red kangaroo",
+                    "native": "Purra"
+                }
+            ],
+            "lines": [
+                [
+                    "* zet Per",
+                    "* ksi Per"
+                ],
+                [
+                    "* ksi Per",
+                    "* f Per"
+                ],
+                [
+                    "* f Per",
+                    "* 58 Per"
+                ],
+                [
+                    "* eps Aur",
+                    "* 59 Per"
+                ],
+                [
+                    "* 59 Per",
+                    "* f Per"
+                ],
+                [
+                    "* 59 Per",
+                    "* alf Aur"
+                ],
+                [
+                    "HD 34557",
+                    "* lam Aur"
+                ],
+                [
+                    "* eta Aur",
+                    "HD 34557"
+                ],
+                [
+                    "HD 34557",
+                    "* lam Aur"
+                ],
+                [
+                    "* lam Aur",
+                    "HD 34904"
+                ],
+                [
+                    "HD 34557",
+                    "HD 34904"
+                ],
+                [
+                    "* eta Aur",
+                    "* zet Aur"
+                ],
+                [
+                    "* zet Aur",
+                    "* 58 Per"
+                ],
+                [
+                    "* 58 Per",
+                    "* f Per"
+                ],
+                [
+                    "* eps Aur",
+                    "HD 36040"
+                ],
+                [
+                    "HD 34904",
+                    "HD 36040"
+                ]
+            ]
+        },
+        {
+            "id": "Bun",
+            "names": [
+                {
+                    "english": "Ring-tail possum",
+                    "native": "Bunya"
+                }
+            ],
+            "lines": [
+                [
+                    "HD 108501",
+                    "* alf01 Cru"
+                ],
+                [
+                    "* alf01 Cru",
+                    "* del Cru"
+                ],
+                [
+                    "* del Cru",
+                    "* gam Cru"
+                ],
+                [
+                    "HD 108732",
+                    "HD 108570"
+                ],
+                [
+                    "HD 108570",
+                    "HD 107543"
+                ],
+                [
+                    "HD 107543",
+                    "HD 107696"
+                ],
+                [
+                    "HD 107696",
+                    "V* BL Cru"
+                ],
+                [
+                    "V* BL Cru",
+                    "* 35 Cru"
+                ],
+                [
+                    "* 35 Cru",
+                    "* 39 Cru"
+                ],
+                [
+                    "* 39 Cru",
+                    "* bet Cru"
+                ],
+                [
+                    "* bet Cru",
+                    "* lam Cru"
+                ],
+                [
+                    "HD 105857",
+                    "* del Cru"
+                ]
+            ]
+        },
+        {
+            "id": "Djt",
+            "names": [
+                {
+                    "english": "Red-rumped parrot",
+                    "native": "Djuit"
+                }
+            ],
+            "lines": [
+                [
+                    "* bet Sco",
+                    "* del Sco"
+                ],
+                [
+                    "* del Sco",
+                    "* pi. Sco"
+                ],
+                [
+                    "* pi. Sco",
+                    "* rho Sco"
+                ],
+                [
+                    "* tau Sco",
+                    "* alf Sco"
+                ],
+                [
+                    "* alf Sco",
+                    "* sig Sco"
+                ],
+                [
+                    "* sig Sco",
+                    "* 42 Lib"
+                ]
+            ]
+        },
+        {
+            "id": "War",
+            "names": [
+                {
+                    "english": "Crow",
+                    "native": "War"
+                }
+            ],
+            "lines": [
+                [
+                    "HD 49517",
+                    "* N Car"
+                ],
+                [
+                    "* N Car",
+                    "* alf Car"
+                ],
+                [
+                    "* alf Car",
+                    "HD 44362"
+                ],
+                [
+                    "HD 44362",
+                    "HD 44594"
+                ]
+            ]
+        },
+        {
+            "id": "Cwr",
+            "names": [
+                {
+                    "english": "Female crow, wife of War",
+                    "native": "Collowgulloric War"
+                }
+            ],
+            "lines": [
+                [
+                    "HD 90074",
+                    "* s Car"
+                ],
+                [
+                    "* s Car",
+                    "* t02 Car"
+                ],
+                [
+                    "* t02 Car",
+                    "HD 92964"
+                ],
+                [
+                    "HD 92964",
+                    "HD 93250"
+                ],
+                [
+                    "HD 93250",
+                    "HD 93943B"
+                ],
+                [
+                    "HD 93943B",
+                    "* u Car"
+                ],
+                [
+                    "* u Car",
+                    "* x Car"
+                ]
+            ]
+        },
+        {
+            "id": "Ydk",
+            "names": [
+                {
+                    "english": "Owlet nightjar",
+                    "native": "Yerredetkurrk"
+                }
+            ],
+            "lines": [
+                [
+                    "HD 10052",
+                    "HD 9896"
+                ],
+                [
+                    "HD 9896",
+                    "* alf Eri"
+                ],
+                [
+                    "* alf Eri",
+                    "HD 10269"
+                ],
+                [
+                    "HD 10269",
+                    "* p Eri B"
+                ]
+            ]
+        },
+        {
+            "id": "Tbg",
+            "names": [
+                {
+                    "english": "Needlewood hakea and willie wagtails",
+                    "native": "Tourtchinboiongerra"
+                }
+            ],
+            "lines": [
+                [
+                    "HD 116287",
+                    "* bet Com"
+                ],
+                [
+                    "* bet Com",
+                    "* 41 Com"
+                ],
+                [
+                    "* 41 Com",
+                    "* 31 Com"
+                ],
+                [
+                    "* 31 Com",
+                    "* 30 Com"
+                ],
+                [
+                    "* 30 Com",
+                    "* 16 Com"
+                ],
+                [
+                    "* 16 Com",
+                    "* 12 Com"
+                ],
+                [
+                    "* bet Com",
+                    "HD 114724"
+                ],
+                [
+                    "HD 114724",
+                    "* 40 Com"
+                ],
+                [
+                    "* 40 Com",
+                    "* 24 Com A"
+                ]
+            ]
+        },
+        {
+            "id": "Bbg",
+            "names": [
+                {
+                    "english": "Red-kneed dotterel",
+                    "native": "Berm-Berm-Gle"
+                }
+            ],
+            "lines": [
+                [
+                    "* eta Cir",
+                    "HD 129422"
+                ],
+                [
+                    "HD 129422",
+                    "* alf Cir"
+                ],
+                [
+                    "HD 129422",
+                    "HD 131342"
+                ],
+                [
+                    "HD 129422",
+                    "HD 125158"
+                ],
+                [
+                    "HD 129422",
+                    "* alf Cen"
+                ]
+            ]
+        },
+        {
+            "id": "Krk",
+            "names": [
+                {
+                    "english": "Australian kestrel",
+                    "native": "Karik Karik"
+                }
+            ],
+            "lines": [
+                [
+                    "* lam Sco",
+                    "* kap Sco"
+                ],
+                [
+                    "* ups Sco",
+                    "* kap Sco"
+                ],
+                [
+                    "* kap Sco",
+                    "* iot01 Sco"
+                ],
+                [
+                    "* kap Sco",
+                    "HD 158799"
+                ],
+                [
+                    "HD 158799",
+                    "* eta Sco"
+                ],
+                [
+                    "* kap Sco",
+                    "* eta Sgr"
+                ]
+            ]
+        },
+        {
+            "id": "Nln",
+            "names": [
+                {
+                    "english": "Mallee fowl",
+                    "native": "Neilloan"
+                }
+            ],
+            "lines": [
+                [
+                    "* alf Lyr",
+                    "* zet Lyr"
+                ],
+                [
+                    "* eps02 Lyr A",
+                    "* zet Lyr"
+                ],
+                [
+                    "* eps02 Lyr A",
+                    "* del02 Lyr"
+                ],
+                [
+                    "* del02 Lyr",
+                    "HD 175635B"
+                ],
+                [
+                    "HD 175635B",
+                    "HD 176051B"
+                ],
+                [
+                    "HD 176051B",
+                    "* gam Lyr"
+                ],
+                [
+                    "* gam Lyr",
+                    "* lam Lyr"
+                ],
+                [
+                    "* lam Lyr",
+                    "* nu. Lyr"
+                ],
+                [
+                    "* nu. Lyr",
+                    "* bet Lyr"
+                ],
+                [
+                    "* bet Lyr",
+                    "HD 173416"
+                ],
+                [
+                    "HD 173416",
+                    "* zet Lyr"
+                ]
+            ]
+        },
+        {
+            "id": "Unu",
+            "names": [
+                {
+                    "english": "Jacky lizard",
+                    "native": "Unurgunite"
+                }
+            ],
+            "lines": [
+                [
+                    "* omi01 CMa",
+                    "HD 51733"
+                ],
+                [
+                    "HD 51733",
+                    "HD 52018"
+                ],
+                [
+                    "HD 52018",
+                    "V* LS CMa"
+                ],
+                [
+                    "V* LS CMa",
+                    "HD 53344"
+                ],
+                [
+                    "HD 53344",
+                    "HD 54173"
+                ],
+                [
+                    "HD 54173",
+                    "HD 54912"
+                ],
+                [
+                    "HD 54912",
+                    "* 26 CMa"
+                ],
+                [
+                    "* 26 CMa",
+                    "* 27 CMa"
+                ],
+                [
+                    "* 27 CMa",
+                    "* ome CMa"
+                ],
+                [
+                    "* ome CMa",
+                    "HD 56160"
+                ],
+                [
+                    "HD 56160",
+                    "HD 55857"
+                ],
+                [
+                    "HD 55857",
+                    "V* HN CMa"
+                ],
+                [
+                    "V* HN CMa",
+                    "HD 55070"
+                ],
+                [
+                    "HD 55070",
+                    "HD 54224"
+                ],
+                [
+                    "V* LS CMa",
+                    "HD 52698"
+                ],
+                [
+                    "HD 52698",
+                    "HD 52138"
+                ],
+                [
+                    "HD 52138",
+                    "HD 51925"
+                ],
+                [
+                    "HD 51925",
+                    "HD 51823"
+                ],
+                [
+                    "HD 51925",
+                    "V* KX CMa"
+                ],
+                [
+                    "HD 51823",
+                    "* sig CMa"
+                ],
+                [
+                    "* sig CMa",
+                    "HD 52619"
+                ],
+                [
+                    "HD 52619",
+                    "HD 51823"
+                ],
+                [
+                    "* sig CMa",
+                    "HD 52698"
+                ]
+            ]
+        },
+        {
+            "id": "Kts",
+            "names": [
+                {
+                    "english": "",
+                    "native": ""
+                }
+            ],
+            "lines": [
+                [
+                    "* bet Hyi",
+                    "* bet Hyi"
+                ]
+            ]
+        },
+        {
+            "id": "Ktc",
+            "names": [
+                {
+                    "english": "Male and female brolga",
+                    "native": "Kourt-chin"
+                }
+            ],
+            "lines": [
+                [
+                    "* zet02 Ret",
+                    "* kap Ret"
+                ],
+                [
+                    "* kap Ret",
+                    "* bet Ret"
+                ],
+                [
+                    "* bet Ret",
+                    "* tet Dor"
+                ],
+                [
+                    "* tet Dor",
+                    "* gam02 Vol"
+                ],
+                [
+                    "* gam02 Vol",
+                    "HD 53501"
+                ],
+                [
+                    "HD 53501",
+                    "* del Vol"
+                ],
+                [
+                    "* tet Dor",
+                    "HD 62920"
+                ],
+                [
+                    "* tet Dor",
+                    "* bet Dor"
+                ],
+                [
+                    "* tet Dor",
+                    "* gam Hyi"
+                ]
+            ]
+        },
+        {
+            "id": "Otc",
+            "names": [
+                {
+                    "english": "Great fish",
+                    "native": "Otchocut"
+                }
+            ],
+            "lines": [
+                [
+                    "* zet Del",
+                    "* 10 Del"
+                ],
+                [
+                    "* 10 Del",
+                    "* del Del"
+                ],
+                [
+                    "* del Del",
+                    "* gam Del"
+                ],
+                [
+                    "* gam Del",
+                    "HD 197039"
+                ],
+                [
+                    "HD 197039",
+                    "* alf Del"
+                ],
+                [
+                    "HD 197039",
+                    "HD 196775"
+                ],
+                [
+                    "HD 197039",
+                    "* zet Del"
+                ],
+                [
+                    "* gam Del",
+                    "HD 198109"
+                ]
+            ]
+        },
+        {
+            "id": "Wpl",
+            "names": [
+                {
+                    "english": "Wedge tailed eagle",
+                    "native": "Warepil"
+                }
+            ],
+            "lines": [
+                [
+                    "* bet CMa",
+                    "* nu.02 CMa"
+                ],
+                [
+                    "* nu.02 CMa",
+                    "* alf CMa"
+                ],
+                [
+                    "* alf CMa",
+                    "* iot CMa"
+                ],
+                [
+                    "* iot CMa",
+                    "* gam CMa"
+                ]
+            ]
+        },
+        {
+            "id": "Cwp",
+            "names": [
+                {
+                    "english": "Female eagle, wife of Warepil",
+                    "native": "Collowgulloric Warepil"
+                }
+            ],
+            "lines": [
+                [
+                    "* ome Eri",
+                    "* psi Eri"
+                ],
+                [
+                    "* psi Eri",
+                    "* lam Eri"
+                ],
+                [
+                    "* lam Eri",
+                    "* iot Lep"
+                ],
+                [
+                    "* iot Lep",
+                    "* kap Lep"
+                ],
+                [
+                    "* kap Lep",
+                    "* mu. Lep B"
+                ],
+                [
+                    "* lam Eri",
+                    "* bet Ori"
+                ]
+            ]
+        },
+        {
+            "id": "Tch",
+            "names": [
+                {
+                    "english": "Emu",
+                    "native": "Tchingal"
+                }
+            ],
+            "lines": [
+                [
+                    "* zet Lup",
+                    "* zet Lup"
+                ]
+            ]
+        },
+        {
+            "id": "Tot",
+            "names": [
+                {
+                    "english": "Purple crowned lorikeet",
+                    "native": "Totyarguil"
+                }
+            ],
+            "lines": [
+                [
+                    "* mu. Aql",
+                    "* ups Aql"
+                ],
+                [
+                    "* ups Aql",
+                    "* ksi Aql b"
+                ],
+                [
+                    "* ksi Aql b",
+                    "HD 189695"
+                ],
+                [
+                    "HD 189695",
+                    "HD 191104A"
+                ],
+                [
+                    "* gam Aql",
+                    "* alf Aql"
+                ],
+                [
+                    "* alf Aql",
+                    "* bet Aql"
+                ]
+            ]
+        },
+        {
+            "id": "Mar",
+            "names": [
+                {
+                    "english": "Meat ant",
+                    "native": "Marpeankurrk"
+                }
+            ],
+            "lines": [
+                [
+                    "* ups Boo",
+                    "* tau Boo"
+                ],
+                [
+                    "* tau Boo",
+                    "* eta Boo"
+                ],
+                [
+                    "* eta Boo",
+                    "* alf Boo B"
+                ],
+                [
+                    "* alf Boo B",
+                    "* pi.01 Boo"
+                ],
+                [
+                    "* pi.01 Boo",
+                    "* zet Boo B"
+                ],
+                [
+                    "* alf Boo B",
+                    "* eps Boo"
+                ],
+                [
+                    "* alf Boo B",
+                    "* rho Boo"
+                ],
+                [
+                    "* eps Boo",
+                    "* del Boo"
+                ],
+                [
+                    "* rho Boo",
+                    "* bet Boo"
+                ],
+                [
+                    "* bet Boo",
+                    "* del Boo"
+                ]
+            ]
+        },
+        {
+            "id": "Wrn",
+            "names": [
+                {
+                    "english": "Galaxy",
+                    "native": "Warring"
+                }
+            ],
+            "lines": [
+                [
+                    "* del Sgr",
+                    "* del Sgr"
+                ]
+            ]
+        },
+        {
+            "id": "Wkr",
+            "names": [
+                {
+                    "english": "Singing bushlark",
+                    "native": "Weetkurrk"
+                }
+            ],
+            "lines": [
+                [
+                    "* e Boo",
+                    "* e Boo"
+                ]
+            ]
+        },
+        {
+            "id": "Gel",
+            "names": [
+                {
+                    "english": "Pink cockatoo",
+                    "native": "Gellarlec"
+                }
+            ],
+            "lines": [
+                [
+                    "* alf Tau",
+                    "* alf Tau"
+                ]
+            ]
+        },
+        {
+            "id": "Col",
+            "names": [
+                {
+                    "english": "Species of ant",
+                    "native": "Collenbitchick"
+                }
+            ],
+            "lines": [
+                [
+                    "* alf02 Cap",
+                    "* alf02 Cap"
+                ]
+            ]
+        },
+        {
+            "id": "Won",
+            "names": [
+                {
+                    "english": "Boomerang",
+                    "native": "Won"
+                }
+            ],
+            "lines": [
+                [
+                    "HD 175219",
+                    "* zet CrA"
+                ],
+                [
+                    "* zet CrA",
+                    "* del CrA"
+                ],
+                [
+                    "* del CrA",
+                    "* bet CrA"
+                ],
+                [
+                    "* bet CrA",
+                    "* alf CrA"
+                ],
+                [
+                    "* alf CrA",
+                    "* gam CrA A"
+                ],
+                [
+                    "* gam CrA A",
+                    "* eps CrA"
+                ],
+                [
+                    "* eps CrA",
+                    "* lam CrA"
+                ]
+            ]
+        },
+        {
+            "id": "Min",
+            "names": [
+                {
+                    "english": "The maned snake",
+                    "native": "Mindi"
+                }
+            ],
+            "lines": [
+                [
+                    "* lam Vel",
+                    "* lam Vel"
+                ]
+            ]
+        }
+    ]
+}
