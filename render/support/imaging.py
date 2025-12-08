@@ -3,7 +3,7 @@ from .configsys import Config
 from .custdataclasses import *
 from PIL import Image,ImageDraw, ImageFont, ImageOps #Pillow library
 from .cordinatesys import cordstoxy
-from multiprocessing import Process,Pipe
+from multiprocessing import Process,Pipe,Queue
 from .math_sp import *
 import time
 
@@ -243,9 +243,9 @@ def drawcircle(img:Image,center:cord,r,color:tuple):
                 ny=wrap(y,0,H-1)
                 img_array[nx,ny]=color
 
-def place_list_stars(img:Image,star_graphicinfo_array,config:Config,child_conn=None,proc_i=None):
+def place_list_stars(img:Image,star_graphicinfo_array,config:Config,queue=None,proc_i=None):
 
-    if child_conn==None:
+    if queue==None:
         # if single threading
         iterator=tqdm(star_graphicinfo_array)
     else:
@@ -258,12 +258,11 @@ def place_list_stars(img:Image,star_graphicinfo_array,config:Config,child_conn=N
     for starg in iterator: #tqdm
         placestar(starg,img,False,config)
         placestar(starg,img,True,config)
-    if child_conn != None:
+    if queue != None:
         arr_img=np.array(img)
         ret=(arr_img,proc_i)
 
-        child_conn.send(ret)
-        child_conn.close()
+        queue.put(ret)
         et=time.time()
         print(time.strftime("%H hours %M minutes %S seconds", time.gmtime(et - st)),f" elapsed for process {proc_i+1}")
     
@@ -300,6 +299,7 @@ def split_gi_list(star_graphicinfo_array,n_proc):
     
     return star_gi_split
 
+
 def thread_stars(img:Image,star_graphicinfo_array,config:Config):
     # DEBUG
     star_graphicinfo_array=star_graphicinfo_array[-1000:]
@@ -317,9 +317,9 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
 
 
     # create multi process
+    queue=Queue()
 
-    parent_conn,child_conn=Pipe()
-    procs=[Process(target=place_list_stars,args=(blank_img,star_gi_split[i],config,child_conn,i)) for i in range(n_proc)]
+    procs=[Process(target=place_list_stars,args=(blank_img,star_gi_split[i],config,queue,i)) for i in range(n_proc)]
 
     proc_imgs=[None for _ in range(n_proc)]
 
@@ -327,7 +327,7 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
         p.start()
     
     for i,p in enumerate(procs):
-        arr_img,proc_i=parent_conn.recv()
+        arr_img,proc_i=queue.get()
         out=Image.fromarray(arr_img,mode="RGBA")
         proc_imgs[proc_i]=out
         
