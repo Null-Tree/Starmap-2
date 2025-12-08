@@ -120,22 +120,15 @@ def placestar(starg:stargraphic,img:Image, center:bool,config:Config):
     final_rgb=list(starg.rgb)
     grey_rgb=rgb_to_greyscale(final_rgb)
     
+    if r<1 and center:
+        # do not draw white cores for smallstars
+        return
+
     if r<1:
-        if basicrender_currstar:
-
-                # if small star, make it dim and dont draw white core
-                
-                if center == True:
-                    return
-                # smoothing
-                for i in range(3):    
-                    final_rgb[i] = int(round((r**0.5)*(final_rgb[i])))
-        else:
-            # smoothing
-            for i in range(3):
-                # adj bightness with prop to r
-                final_rgb[i] = int(round(r*final_rgb[i]))
-
+        # smoothing
+        for i in range(3):    
+            final_rgb[i] = int(round((r**0.5)*(final_rgb[i])))
+        
 
     # change rgb back to tuple
     final_rgb=tuple(final_rgb)
@@ -144,15 +137,13 @@ def placestar(starg:stargraphic,img:Image, center:bool,config:Config):
     # percentage of star radius for white center
     p_s_size = config.stars.whitecore_coef
 
+    # raw adjustment to radius
+    
+    r =  int(r) + config.stars.raw_r_adj
+
     # if rendering normal
     if not basicrender_currstar:
         
-        # raw adjustment to radius
-        raw_adj=1
-
-
-        r =  int(r) + raw_adj
-
         star_img_original = config.stars.stargraphic
 
 
@@ -166,7 +157,6 @@ def placestar(starg:stargraphic,img:Image, center:bool,config:Config):
             caststar(img,star_img,centercord)
 
         else:
-            
             # white center
             r_w = round(r* p_s_size)
             wc_img=star_img_original.copy()
@@ -179,11 +169,11 @@ def placestar(starg:stargraphic,img:Image, center:bool,config:Config):
     else:
         if not center:
             # draw.circle((starg.x,starg.y), radius=starg.radius, fill=final_rgb)
-            drawcircle(img,cord(starg.x,starg.y),starg.radius,final_rgb)
+            drawcircle(img,cord(starg.x,starg.y),r,final_rgb)
         else:
             # inner circle
             # draw.circle((starg.x,starg.y), radius=starg.radius*p_s_size, fill=rgb_to_greyscale(final_rgb))
-            drawcircle(img,cord(starg.x,starg.y),starg.radius*p_s_size,rgb_to_greyscale(final_rgb))
+            drawcircle(img,cord(starg.x,starg.y),r*p_s_size,rgb_to_greyscale(final_rgb))
 
     # debug
     # draw = ImageDraw.Draw(img)
