@@ -48,7 +48,7 @@ def main():
 
 
     # open all stars and load binary
-    targetfilepath=r"render\static\data\binaries\all_stars"
+    targetfilepath=r"render/static/data/binaries/all_stars"
     with open(targetfilepath, 'rb') as allsbfile:
         star_raw_array=pickle.load(allsbfile)
 

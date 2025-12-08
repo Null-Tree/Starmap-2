@@ -91,7 +91,7 @@ def getconfig():
     config.cons.label.label=False
     config.antialius=True
 
-    config.stars.stargraphic=Image.open(r"render\static\visuals\graphics\stargraphic.png")
+    config.stars.stargraphic=Image.open(r"render/static/visuals/graphics/stargraphic.png")
     config.basicrender=False
     config.cord_mode="celestial" # /"celestial" or "galactic"
 
@@ -109,10 +109,10 @@ def getconfig():
     config.cons.skylore='iau'  #'iau or boorong
 
     if config.cons.skylore=='iau':
-        config.cons.jsonfile=r"render\static\data\csv\iau.json"
-        config.cons.txtfile=r'render\static\data\csv\iau.coords.txt'
+        config.cons.jsonfile=r"render/static/data/csv/iau.json"
+        config.cons.txtfile=r'render/static/data/csv/iau_coords.txt'
     elif config.cons.skylore=="boorong":
-        config.cons.jsonfile=r"render\static\data\csv\boorong\boorong.json"
-        config.cons.txtfile=r'render\static\data\csv\boorong\boorong_cords.txt'       
+        config.cons.jsonfile=r"render/static/data/csv/boorong/boorong.json"
+        config.cons.txtfile=r'render/static/data/csv/boorong/boorong_cords.txt'       
 
     return config
