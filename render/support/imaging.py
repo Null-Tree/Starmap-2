@@ -243,8 +243,6 @@ def drawcircle(img:Image,center:cord,r,color:tuple):
                 ny=wrap(y,0,H-1)
                 img_array[nx,ny]=color
 
-
-
 def place_list_stars(img:Image,star_graphicinfo_array,config:Config,child_conn=None,proc_i=None):
 
     if child_conn==None:
@@ -261,7 +259,10 @@ def place_list_stars(img:Image,star_graphicinfo_array,config:Config,child_conn=N
         placestar(starg,img,False,config)
         placestar(starg,img,True,config)
     if child_conn != None:
-        child_conn.send((img,proc_i))
+        arr_img=np.array(img)
+        ret=(arr_img,proc_i)
+
+        child_conn.send(ret)
         child_conn.close()
         et=time.time()
         print(time.strftime("%H hours %M minutes %S seconds", time.gmtime(et - st)),f" elapsed for process {proc_i+1}")
@@ -300,6 +301,8 @@ def split_gi_list(star_graphicinfo_array,n_proc):
     return star_gi_split
 
 def thread_stars(img:Image,star_graphicinfo_array,config:Config):
+    # DEBUG
+    star_graphicinfo_array=star_graphicinfo_array[-1000:]
 
 
     # split graphic info into seperate lists to do with multi process
@@ -324,7 +327,8 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
         p.start()
     
     for i,p in enumerate(procs):
-        out,proc_i=parent_conn.recv()
+        arr_img,proc_i=parent_conn.recv()
+        out=Image.fromarray(arr_img,mode="RGBA")
         proc_imgs[proc_i]=out
         
         
@@ -337,10 +341,10 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
         a_comp.alpha_composite(sub_img)
 
     # DEBUG
-    a_comp.show()
+    # a_comp.show()
     
     img.paste(a_comp,(0,0),mask=a_comp)
-    img.show()
+    # img.show()
 
     return img
     
