@@ -302,7 +302,7 @@ def split_gi_list(star_graphicinfo_array,n_proc):
 
 def thread_stars(img:Image,star_graphicinfo_array,config:Config):
     # DEBUG
-    star_graphicinfo_array=star_graphicinfo_array[-1000:]
+    # star_graphicinfo_array=star_graphicinfo_array[-1000:]
 
 
     # split graphic info into seperate lists to do with multi process
@@ -361,7 +361,7 @@ def saveimg(img):
     tempfile(1)
 
 def tempfile(n = None):
-    filePath = r"render\exports\ref.txt"
+    filePath = r"render/exports/ref.txt"
     if not n:                      # If not provided return file content
         with open(filePath, "r") as f:
             n = int(f.read())
