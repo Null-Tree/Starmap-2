@@ -1,5 +1,5 @@
 # import random
-# import time
+import time
 # import json
 # import matplotlib.pyplot as plt
 # import numpy as np
@@ -62,10 +62,18 @@ def main():
     
 
     print("drawing stars")
-    imaging.place_list_stars(img,star_graphicinfo_array,config)
+    if config.multi_process:
+        print(f"multithreading with {config.n_process}")
+        imaging.thread_stars(img,star_graphicinfo_array,config)
+    else:
+        imaging.place_list_stars(img,star_graphicinfo_array,config)
 
-    img.show()
+    # img.show()
 
     imaging.saveimg(img)
 
-main()
+if __name__=="__main__":
+    st=time.time()
+    main()
+    et=time.time()
+    print(time.strftime("%H hours %M minutes %S seconds", time.gmtime(et - st)),f" elapsed")

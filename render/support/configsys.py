@@ -18,6 +18,7 @@ class starsConfig:
     appmagreq:float= None
     stargraphic:Image= None
     whitecore_coef:float=None
+    raw_r_adj:int=None
 
 @dataclass
 class labelConfig:
@@ -58,12 +59,17 @@ class Config:
     bounds:list= None
     basicrender:bool= None
     antialius:bool= None
+    multi_process:bool=None
+    n_process:int=None
 
 ##################################
 
 def getconfig():
 
     config=Config(backgroundConfig(),starsConfig(),constellationConfig(label=labelConfig()),axisConfig())
+
+    config.multi_process=True
+    config.n_process=4
     
     sizepower=14
     config.bg.width=2**sizepower
@@ -72,20 +78,21 @@ def getconfig():
 
     config.stars.minradius=0
     config.stars.colormin=0
-    config.stars.appmagreq=9
+    config.stars.appmagreq=10
     config.stars.maxradius=80
+    config.stars.raw_r_adj=2
 
     config.cons.draw_cons=True
     config.cons.consborderRGB=(80,80,80) 
-    config.cons.conslinewidth=12
+    config.cons.conslinewidth=12//2
 
     config.cons.label.labelcolor=(109, 191, 184)
     config.cons.label.labelsize=32
-    config.cons.label.label=True
+    config.cons.label.label=False
     config.antialius=True
 
     config.stars.stargraphic=Image.open(r"render\static\visuals\graphics\stargraphic.png")
-    config.basicrender=True
+    config.basicrender=False
     config.cord_mode="celestial" # /"celestial" or "galactic"
 
     # config.bounds=[cord(150.5,-20.50),cord(190.75,20.000)]
@@ -93,7 +100,7 @@ def getconfig():
     config.bounds=[cord(0,-90),cord(360,90)]
 
 
-    config.axis.drawAxis=True
+    config.axis.drawAxis=False
     config.axis.linefill=(10, 32, 90)
     config.axis.textfill=(109, 191, 184)
 

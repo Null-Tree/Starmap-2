@@ -1,7 +1,7 @@
 import numpy as np
 import json
 from tqdm import tqdm
-
+from .math_sp import *
 
 
 import astropy.units as u
@@ -21,10 +21,6 @@ def equatorialtogalactic(ra,dec):
     return coord
 
 
-
-def bounded_shift(val,delta,interval):
-    """general shift, note start and end of interval are same, will go to int min"""
-    return np.clip(val+delta,interval[0],interval[1])
 
 
 # 24 hour
@@ -114,7 +110,7 @@ def handleconsjson(jsonfile,txtfile,img,config:Config):
                     cord=equatorialtogalactic(this_line_ra[star] * 15,this_line_de[star])
                     this_line_ra[star]=cord.l.deg /15 # needs to be in hours for later comparison
                     vvx=this_line_ra[star]
-                    this_line_ra[star]=bounded_shift(vvx,0,(0,24))
+                    this_line_ra[star]=wrap(vvx+0,0,24)
                     this_line_de[star]=cord.b.deg
 
 

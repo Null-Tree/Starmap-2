@@ -3,7 +3,9 @@ from .configsys import Config
 from .custdataclasses import *
 from PIL import Image,ImageDraw, ImageFont, ImageOps #Pillow library
 from .cordinatesys import cordstoxy
-
+from multiprocessing import Process,Pipe
+from .math_sp import *
+import time
 
 def createimg(config:Config):    
     img = Image.new(mode="RGB",size=(config.bg.width,config.bg.height), color=config.bg.fillcolor)
@@ -195,8 +197,8 @@ def caststar(bg:Image,img:Image,centercords:cord):
         for y in range(imgH):
             color=imgarray[x,y]
 
-            nx=np.clip(x+topleft.x,0,bgW-1)
-            ny=np.clip(y+topleft.y,0,bgH-1)
+            nx=wrap(x+topleft.x,0,bgW-1)
+            ny=wrap(y+topleft.y,0,bgH-1)
 
             rgb=((color)[0:3])
             # tuple(list
@@ -204,11 +206,28 @@ def caststar(bg:Image,img:Image,centercords:cord):
 
 
             bg_rgb=bgarray[nx,ny]
+            if img.mode=="RGB":
+                out = tuple([int(bg_rgb[i]*(1-a) + rgb[i]*a) for i in range(3)])
+                bgarray[nx,ny]=out
             
-            out = tuple([int(bg_rgb[i]*(1-a) + rgb[i]*a) for i in range(3)])
-            
+            elif img.mode == "RGBA":
+                a_bg=bg_rgb[3]/255
+
+                a_out=a+a_bg*(1-a)
+
+                if a_out==0:
+                    continue
+
+
+                l=[int((rgb[i]*a + bg_rgb[i]*(1-a)*a_bg)/a_out) for i in range(3)]
                 
-            bgarray[nx,ny]=out
+                l.append(int(a_out*255))
+
+                out = tuple(l)
+                bgarray[nx,ny]=out
+
+            else:
+                raise Exception()
 
 def drawcircle(img:Image,center:cord,r,color:tuple):
     W,H = img.size
@@ -220,29 +239,113 @@ def drawcircle(img:Image,center:cord,r,color:tuple):
         for y in range(cy-r,cy+r+1):
             # mask
             if (x-cx)**2 + (y-cy)**2 <= r**2:
-                nx=np.clip(x,0,W-1)
-                ny=np.clip(y,0,H-1)
+                nx=wrap(x,0,W-1)
+                ny=wrap(y,0,H-1)
                 img_array[nx,ny]=color
 
 
 
-def place_list_stars(img:Image,star_graphicinfo_array,config:Config):
+def place_list_stars(img:Image,star_graphicinfo_array,config:Config,child_conn=None,proc_i=None):
 
-    # # place glows
-    # print("glows")
-    # for starg in tqdm(star_g_items):
-    #     placestar(starg,img,False)
+    if child_conn==None:
+        # if single threading
+        iterator=tqdm(star_graphicinfo_array)
+    else:
+        # ifmultithreading
+        iterator=star_graphicinfo_array
+        st=time.time()
 
-    # # place white centers
-    # print("centers")
-    # for starg in tqdm(star_g_items):
-    #     placestar(starg,img,True)
-
-    # new
-    
-    for starg in tqdm(star_graphicinfo_array):
+    # DEBUG
+    iterator=tqdm(star_graphicinfo_array)
+    for starg in iterator: #tqdm
         placestar(starg,img,False,config)
         placestar(starg,img,True,config)
+    if child_conn != None:
+        child_conn.send((img,proc_i))
+        child_conn.close()
+        et=time.time()
+        print(time.strftime("%H hours %M minutes %S seconds", time.gmtime(et - st)),f" elapsed for process {proc_i+1}")
+    
+
+
+def split_gi_list(star_graphicinfo_array,n_proc):
+    lengh=len(star_graphicinfo_array)
+    n_reg_sections=n_proc-1
+    reg_s_len=lengh//n_reg_sections
+
+
+    coef_l=[i for i in range(n_reg_sections)]+[n_reg_sections-0.4]
+
+    # print(coef_l)
+    
+    split_i_l=[int(coef*reg_s_len) for coef in coef_l]
+
+
+    star_gi_split=[]
+    for x1 in range(len(split_i_l)-1):
+        i1,i2=split_i_l[x1:x1+2]
+        l=star_graphicinfo_array[i1:i2]
+        star_gi_split.append(l)
+    
+    l=star_graphicinfo_array[split_i_l[-1]:]
+    star_gi_split.append(l)
+
+
+    # c=0
+    # for l in star_gi_split:
+    #     c+=len(l)
+    # print(c)
+    # exit()
+    
+    return star_gi_split
+
+def thread_stars(img:Image,star_graphicinfo_array,config:Config):
+
+
+    # split graphic info into seperate lists to do with multi process
+    n_proc=config.n_process
+
+    star_gi_split=split_gi_list(star_graphicinfo_array,n_proc)
+
+    # create blank transparent ver of bg to combine later
+    
+    blank_img=Image.new("RGBA",img.size,(0,0,0,0))
+    # blank_img=Image.new("RGBA",img.size,(0,0,80,255))
+
+
+    # create multi process
+
+    parent_conn,child_conn=Pipe()
+    procs=[Process(target=place_list_stars,args=(blank_img,star_gi_split[i],config,child_conn,i)) for i in range(n_proc)]
+
+    proc_imgs=[None for _ in range(n_proc)]
+
+    for p in procs:
+        p.start()
+    
+    for i,p in enumerate(procs):
+        out,proc_i=parent_conn.recv()
+        proc_imgs[proc_i]=out
+        
+        
+    for p in procs:
+        p.join()
+        
+    a_comp=blank_img.copy()
+    del blank_img
+    for sub_img in proc_imgs:
+        a_comp.alpha_composite(sub_img)
+
+    # DEBUG
+    a_comp.show()
+    
+    img.paste(a_comp,(0,0),mask=a_comp)
+    img.show()
+
+    return img
+    
+    
+        
 
 
 def saveimg(img):
