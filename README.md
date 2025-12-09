@@ -7,8 +7,7 @@ Added cordinate axis, config class, cordinate selection, etc.
 
 ## Required resources
 Requires atleast the `render\static\data\binaries\all_stars` turtle binary file.
-Is too big for my current github plan.
-Provided on request.
+Is too big for my current github plan, may be downloaded form google drive [here](https://drive.google.com/file/d/17sYW8ccLNKOs35wMnL6D3INtvtmAKITI/view?usp=sharing).
 
 ## Sample
 (Actual exports can have much higher quality, eg 32k)
