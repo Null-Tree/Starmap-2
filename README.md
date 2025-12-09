@@ -23,7 +23,7 @@ Simple render + (galactic cordinate system)
 At 32k quality:
 Simple render ~10 min.
 High qualtiy ~1 hour with single thread, ~10 min with multiprocessing. 
-Note heavily subj to system specifications. 
+Note heavily subj to system specifications and config settings. 
 
-
+Change config settings in `support/configsys.pt`.
 
