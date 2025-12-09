@@ -361,18 +361,34 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
     
     
         
-
+import os
 
 def saveimg(img):
-    # img.save(sys.stdout, "PNG")
-    string=f"render/exports/Export{tempfile()}.png"
-    # string="v1WesternLOW.png"
-    print(f"saved as {string}")
-    img.save(string)
-    tempfile(1)
+        export_folder=f"render/exports"
+        export_n_trackerfile='render/exports/ref.txt'
 
-def tempfile(n = None):
-    filePath = r"render/exports/ref.txt"
+
+        if not os.path.isdir(export_folder):
+            print("Export folder does not exist, created export folder")
+            os.mkdir(export_folder)
+
+        try:
+            n=tempfile(export_n_trackerfile)
+            # print(n)
+        except FileNotFoundError:
+            print("tracker file does not exist, tracker file created")
+            n=1
+            f = open(export_n_trackerfile, "w")
+            f.write("1")
+            f.close()
+    
+            string=f"render/exports/Export{n}.png"
+            print(f"saved as {string}")
+            img.save(string)
+            tempfile(export_n_trackerfile,1)
+
+def tempfile(fp,n = None):
+    filePath = fp
     if not n:                      # If not provided return file content
         with open(filePath, "r") as f:
             n = int(f.read())
