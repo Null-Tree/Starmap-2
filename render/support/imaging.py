@@ -272,37 +272,22 @@ def place_list_stars(img:Image,star_graphicinfo_array,config:Config,queue=None,p
 
         queue.put(ret)
 
+def place_star_subthread(img:Image,inqueue:Queue,config:Config,outqueue:Queue,proc_i,center):
 
-def split_gi_list(star_graphicinfo_array,n_proc):
-    lengh=len(star_graphicinfo_array)
-    n_reg_sections=n_proc-1
-    reg_s_len=lengh//n_reg_sections
+    st=time.time()
 
+    while not inqueue.empty():
+        starg=inqueue.get()
+        placestar(starg,img,center,config)
 
-    coef_l=[i for i in range(n_reg_sections)]+[n_reg_sections-0.4]
+    et=time.time()
+    print(time.strftime("%H hours %M minutes %S seconds", time.gmtime(et - st)),f" elapsed for process {proc_i+1}")
+    arr_img=np.array(img)
+    ret=(arr_img,proc_i)
 
-    # print(coef_l)
+    outqueue.put(ret)
     
-    split_i_l=[int(coef*reg_s_len) for coef in coef_l]
 
-
-    star_gi_split=[]
-    for x1 in range(len(split_i_l)-1):
-        i1,i2=split_i_l[x1:x1+2]
-        l=star_graphicinfo_array[i1:i2]
-        star_gi_split.append(l)
-    
-    l=star_graphicinfo_array[split_i_l[-1]:]
-    star_gi_split.append(l)
-
-
-    # c=0
-    # for l in star_gi_split:
-    #     c+=len(l)
-    # print(c)
-    # exit()
-    
-    return star_gi_split
 
 
 def thread_stars(img:Image,star_graphicinfo_array,config:Config):
@@ -315,8 +300,11 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
     n_proc_wc=n_proc//2
     n_proc_glow=n_proc-n_proc_wc
 
-    sgi_split_wc=split_gi_list(star_graphicinfo_array,n_proc_wc)
-    sgi_split_glow=split_gi_list(star_graphicinfo_array,n_proc_glow)
+    wc_q=Queue()
+    glow_q=Queue()
+    for g in star_graphicinfo_array:
+        wc_q.put(g)
+        glow_q.put(g)
 
     # create blank transparent ver of bg to combine later
     
@@ -325,10 +313,11 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
 
 
     # create multi process
-    queue=Queue()
+    outqueue=Queue()
 
-    procs_glow=[Process(target=place_list_stars,args=(blank_img,sgi_split_glow[i],config,queue,i,False)) for i in range(n_proc_glow)]
-    procs_wc=[Process(target=place_list_stars,args=(blank_img,sgi_split_wc[i],config,queue,i+n_proc_glow,True)) for i in range(n_proc_wc)]
+    procs_glow=[Process(target=place_star_subthread,args=(blank_img,glow_q,config,outqueue,i,False)) for i in range(n_proc_glow)]
+    procs_wc=[Process(target=place_star_subthread,args=(blank_img,wc_q[i],config,outqueue,i+n_proc_glow,True)) for i in range(n_proc_wc)]
+
 
     procs=procs_glow+procs_wc
 
@@ -337,8 +326,22 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
     for p in procs:
         p.start()
     
+    s_total=len(star_graphicinfo_array)
+    prev_glow=s_total
+    prev_wc=s_total
+    pbar_glow = tqdm(total=s_total, desc="Processing glows")
+    pbar_wc = tqdm(total=s_total, desc="Processing cores")
+    while not wc_q.empty() or not glow_q.empty():
+        d_glow=prev_glow-glow_q.qsize()
+        d_wc=prev_wc-wc_q.qsize()
+        pbar_glow.update(d_glow)
+        pbar_wc.update(d_wc)
+        prev_glow-=d_glow
+        prev_wc-=d_wc
+        time.sleep(0.5)
+
     for i,p in enumerate(procs):
-        arr_img,proc_i=queue.get()
+        arr_img,proc_i=outqueue.get()
         out=Image.fromarray(arr_img,mode="RGBA")
         proc_imgs[proc_i]=out
         
