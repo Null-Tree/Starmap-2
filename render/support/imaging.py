@@ -243,29 +243,34 @@ def drawcircle(img:Image,center:cord,r,color:tuple):
                 ny=wrap(y,0,H-1)
                 img_array[nx,ny]=color
 
-def place_list_stars(img:Image,star_graphicinfo_array,config:Config,queue=None,proc_i=None):
+def place_list_stars(img:Image,star_graphicinfo_array,config:Config,queue=None,proc_i=None,center=None):
 
     if queue==None:
         # if single threading
         iterator=tqdm(star_graphicinfo_array)
+        # DEBUG
+        iterator=tqdm(star_graphicinfo_array)
+        for starg in iterator: #tqdm
+            placestar(starg,img,False,config)
+        for starg in iterator: #tqdm
+            placestar(starg,img,True,config)
+            
     else:
+
         # ifmultithreading
         iterator=star_graphicinfo_array
         st=time.time()
 
-    # DEBUG
-    iterator=tqdm(star_graphicinfo_array)
-    for starg in iterator: #tqdm
-        placestar(starg,img,False,config)
-        placestar(starg,img,True,config)
-    if queue != None:
+        iterator=tqdm(star_graphicinfo_array)
+        for starg in iterator: #tqdm
+            placestar(starg,img,center,config)
+
+        et=time.time()
+        print(time.strftime("%H hours %M minutes %S seconds", time.gmtime(et - st)),f" elapsed for process {proc_i+1}")
         arr_img=np.array(img)
         ret=(arr_img,proc_i)
 
         queue.put(ret)
-        et=time.time()
-        print(time.strftime("%H hours %M minutes %S seconds", time.gmtime(et - st)),f" elapsed for process {proc_i+1}")
-    
 
 
 def split_gi_list(star_graphicinfo_array,n_proc):
@@ -307,6 +312,8 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
 
     # split graphic info into seperate lists to do with multi process
     n_proc=config.n_process
+    n_proc_wc=n_proc//2
+    n_proc_glow=n_proc-n_proc_wc
 
     star_gi_split=split_gi_list(star_graphicinfo_array,n_proc)
 
