@@ -315,8 +315,7 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
     n_proc_wc=n_proc//2
     n_proc_glow=n_proc-n_proc_wc
 
-    sgi_split_wc=split_gi_list(star_graphicinfo_array,n_proc_wc)
-    sgi_split_glow=split_gi_list(star_graphicinfo_array,n_proc_glow)
+    star_gi_split=split_gi_list(star_graphicinfo_array,n_proc)
 
     # create blank transparent ver of bg to combine later
     
@@ -327,10 +326,7 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
     # create multi process
     queue=Queue()
 
-    procs_glow=[Process(target=place_list_stars,args=(blank_img,sgi_split_glow[i],config,queue,i,False)) for i in range(n_proc_glow)]
-    procs_wc=[Process(target=place_list_stars,args=(blank_img,sgi_split_wc[i],config,queue,i+n_proc_glow,True)) for i in range(n_proc_wc)]
-
-    procs=procs_glow+procs_wc
+    procs=[Process(target=place_list_stars,args=(blank_img,star_gi_split[i],config,queue,i)) for i in range(n_proc)]
 
     proc_imgs=[None for _ in range(n_proc)]
 
