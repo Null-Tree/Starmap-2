@@ -69,9 +69,9 @@ def getconfig():
     config=Config(backgroundConfig(),starsConfig(),constellationConfig(label=labelConfig()),axisConfig())
 
     config.multi_process=True
-    config.n_process=6
+    config.n_process=4
     
-    sizepower=15
+    sizepower=14
     config.bg.width=2**sizepower
     config.bg.height=2**(sizepower-1)
     config.bg.fillcolor=(0,0,0)
@@ -79,12 +79,12 @@ def getconfig():
     config.stars.minradius=0
     config.stars.colormin=0
     config.stars.appmagreq=10
-    config.stars.maxradius=80 *2
+    config.stars.maxradius=80
     config.stars.raw_r_adj=2
 
     config.cons.draw_cons=True
     config.cons.consborderRGB=(80,80,80) 
-    config.cons.conslinewidth=12//2 *2
+    config.cons.conslinewidth=12//2
 
     config.cons.label.labelcolor=(109, 191, 184)
     config.cons.label.labelsize=32
@@ -93,7 +93,7 @@ def getconfig():
 
     config.stars.stargraphic=Image.open(r"render/static/visuals/graphics/stargraphic.png")
     config.basicrender=False
-    config.cord_mode="galactic" # /"celestial" or "galactic"
+    config.cord_mode="celestial" # /"celestial" or "galactic"
 
     # config.bounds=[cord(150.5,-20.50),cord(190.75,20.000)]
 
