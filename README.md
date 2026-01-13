@@ -1,6 +1,8 @@
 # Astral star map 2
 Refactored version of its predecessor.
 
+Renders around a million stars from the GAIA database through ecliptic or galactic cordinates, into a large high quality image.
+
 Planning to implement panaroma projections to fix previous issues.
 Planning to add UI.
 Added cordinate axis, config class, cordinate selection, etc.
