@@ -12,7 +12,12 @@ Requires atleast the `render\static\data\binaries\all_stars` turtle binary file.
 Is too big for my current github plan, may be downloaded form google drive [here](https://drive.google.com/file/d/17sYW8ccLNKOs35wMnL6D3INtvtmAKITI/view?usp=sharing).
 
 ## Sample
-(Actual exports can have much higher quality, eg 32k)
+
+mple image files (32k google drive)
+![Ra Dec system (celestial)](https://drive.google.com/file/d/1ucUdvCSDz5O7Onc_7dyFeHvNmEsUnVDm/view?usp=sharing)
+![Galactic system](https://drive.google.com/file/d/1w-9C3yD5aeLCFIQeoaAdqsovtH0L4Cmb/view?usp=sharing)
+
+
 
 High quality render + (RA DEC system)
 ![](sample/sample1.png)
