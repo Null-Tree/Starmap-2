@@ -14,8 +14,8 @@ Is too big for my current github plan, may be downloaded form google drive [here
 ## Sample
 
 mple image files (32k google drive)
-![Ra Dec system (celestial)](https://drive.google.com/file/d/1ucUdvCSDz5O7Onc_7dyFeHvNmEsUnVDm/view?usp=sharing)
-![Galactic system](https://drive.google.com/file/d/1w-9C3yD5aeLCFIQeoaAdqsovtH0L4Cmb/view?usp=sharing)
+[Ra Dec system (celestial)](https://drive.google.com/file/d/1ucUdvCSDz5O7Onc_7dyFeHvNmEsUnVDm/view?usp=sharing)
+[Galactic system](https://drive.google.com/file/d/1w-9C3yD5aeLCFIQeoaAdqsovtH0L4Cmb/view?usp=sharing)
 
 
 
