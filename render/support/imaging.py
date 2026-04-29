@@ -8,17 +8,23 @@ from .math_sp import *
 import time
 
 def createimg(config:Config):    
+    """creates the image"""
     img = Image.new(mode="RGB",size=(config.bg.width,config.bg.height), color=config.bg.fillcolor)
     return img
 
 
 #for drawing axis
 def drawline_single(img,cord1:cord,cord2:cord,width,rgb):
+    """draw a single line"""
     draw = ImageDraw.Draw(img)
     cordslist=[(cord1.x,cord1.y),(cord2.x,cord2.y)]
     draw.line(cordslist, fill =rgb, width = width)
 
 def drawsingletext_XY(x , y, string,fontsize, img:Image,txtfill,antialius):
+    """
+    renders a text at a given xy on image
+    i dont think this centers, is top left
+    """
     draw=ImageDraw.Draw(img)
     fill=txtfill    
     ImageDraw.ImageDraw.fontmode=antialius
@@ -31,6 +37,7 @@ def drawsingletext_XY(x , y, string,fontsize, img:Image,txtfill,antialius):
 
 # draw axis
 def render_axis(img,config:Config):
+    """creates axis for image using radec or lb"""
     bounds=config.bounds
     
     sx1,sy1,sx2,sy2=[bounds[0].x,bounds[0].y,bounds[1].x,bounds[1].y]
@@ -85,6 +92,10 @@ from tqdm import tqdm
 
 
 def rgb_to_greyscale(rgb):
+    """
+    rgb to grey scale
+    not sure if this is even used anywhere anymore
+    """
 
     # for avg
 
@@ -99,7 +110,10 @@ def rgb_to_greyscale(rgb):
     return (mean,mean,mean)
 
 def tint_img(src:Image, color):
-    """tints input image, src png, color rgb"""
+    """
+    tints input image, src png, color rgb
+    used to color star from white template
+    """
     src.load()
     # extract alpha transparency
     r, g, b, alpha = src.split()
@@ -113,6 +127,12 @@ def tint_img(src:Image, color):
 
 
 def placestar(starg:stargraphic,img:Image, center:bool,config:Config):
+    """
+    places a given stargraphic object
+    center dicates if we place the
+    white center, which is slightly smaller than the
+    coloured glow which is larger than the white center
+    """
     basicrender_currstar=config.basicrender
     
     r=starg.radius
@@ -184,6 +204,10 @@ def placestar(starg:stargraphic,img:Image, center:bool,config:Config):
 import numpy as np
 
 def caststar(bg:Image,img:Image,centercords:cord):
+    """
+    manual image paste function
+    wrote this to potetially implement transformations later
+    """
     bgW,bgH = bg.size
     imgW,imgH=img.size
 
@@ -230,6 +254,7 @@ def caststar(bg:Image,img:Image,centercords:cord):
                 raise Exception()
 
 def drawcircle(img:Image,center:cord,r,color:tuple):
+    """self explanatory"""
     W,H = img.size
     img_array=img.load()
     
@@ -244,6 +269,10 @@ def drawcircle(img:Image,center:cord,r,color:tuple):
                 img_array[nx,ny]=color
 
 def place_list_stars(img:Image,star_graphicinfo_array,config:Config,queue=None,proc_i=None,center=None):
+    """
+    places a list of stars onto image
+    may be called by the multithreading
+    """
 
     if queue==None:
         # if single threading
@@ -274,6 +303,7 @@ def place_list_stars(img:Image,star_graphicinfo_array,config:Config,queue=None,p
 
 
 def split_gi_list(star_graphicinfo_array,n_proc):
+    """splits list of all star graphic items for multithreading"""
     lengh=len(star_graphicinfo_array)
     n_reg_sections=n_proc-1
     reg_s_len=lengh//n_reg_sections
@@ -306,6 +336,10 @@ def split_gi_list(star_graphicinfo_array,n_proc):
 
 
 def thread_stars(img:Image,star_graphicinfo_array,config:Config):
+    """
+    renders stars using multiprocesses
+    renders n different pngs, then overlays all of them
+    """
     # DEBUG
     # star_graphicinfo_array=star_graphicinfo_array[-1000:]
 
@@ -364,6 +398,7 @@ def thread_stars(img:Image,star_graphicinfo_array,config:Config):
 import os
 
 def saveimg(img):
+        """saves the image, auto names and sorts directory stuff"""
         export_folder=f"render/exports"
         export_n_trackerfile='render/exports/ref.txt'
 
@@ -407,6 +442,7 @@ def tempfile(fp,n = None):
 # for constelllations:
 
 def drawtext(ralist : list, declist : list, strlist : list, img:Image,config:Config):
+    """renders text for constellation names, handles multiple at once"""
     draw=ImageDraw.Draw(img)
     rl=ralist
     dl=declist
@@ -436,6 +472,7 @@ def drawtext(ralist : list, declist : list, strlist : list, img:Image,config:Con
 
 
 def drawline(xlist,ylist,img,config:Config):
+    """draws lines of a constellation"""
 
     if config.cons.draw_cons == False:
         return

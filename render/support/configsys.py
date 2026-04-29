@@ -50,6 +50,9 @@ class axisConfig:
 
 @dataclass
 class Config:
+    """
+    stores config
+    """
     bg:backgroundConfig= None
     stars:starsConfig= None
     cons:constellationConfig= None
@@ -65,6 +68,10 @@ class Config:
 ##################################
 
 def getconfig():
+    """
+    This is used to get the config of the renderer
+    will be linked to the UI module if it gets made
+    """
 
     config=Config(backgroundConfig(),starsConfig(),constellationConfig(label=labelConfig()),axisConfig())
 

@@ -4,6 +4,10 @@ from .custdataclasses import *
 from .configsys import Config
 
 def format_all_stars(star_raw_array,config:Config):
+    """
+    formats original star data class into star graphic class 
+    by preprocessing their visual parameters
+    """
     
     star_grapicinfo_array=[]
 
@@ -20,6 +24,7 @@ from .cordinatesys import cordstoxy
 
 import math
 def appmag_to_size(appmag,config:Config):
+    """function to convert apparent magnitude to size (radius in px)"""
 
     coef=  15.417/20 * (math.e ** (-0.425 * appmag))
     # coef 0 to 1
@@ -29,6 +34,7 @@ def appmag_to_size(appmag,config:Config):
 
 
 def starformatter(star:Star,config:Config):    
+    """formats the graphic params of a star"""
     # /"celestial" or "galactic"
     if config.cord_mode=="celestial":
         starcords=cord(star.ra,star.dec)

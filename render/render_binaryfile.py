@@ -1,25 +1,5 @@
-# import random
+
 import time
-# import json
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import csv
-# import sqlite3
-# import math
-# import sys
-# from tqdm import tqdm
-# from tkinter import * 
-# from PIL import Image,ImageDraw, ImageFont #Pillow library
-# import scipy.ndimage as ndi
-
-# import astropy.units as u
-# import astropy.time
-# import astropy.coordinates
-
-# from dataclasses import dataclass
-
-# from PIL import ImageOps
-# import pickle
 
 from support.custdataclasses import *
 

@@ -25,6 +25,11 @@ def equatorialtogalactic(ra,dec):
 
 # 24 hour
 def wrapped_line(ra,de): #numpy arrays
+    """
+    If a line crosses image borders
+    make it into two lines such that it wraps around the image borders
+    
+    """
     # [23.63561223  0.30546109] [43.26807662 36.78522667] * pi. And * del And
     # takes an ra,dec pair and creates two new lines crossing 00:00-24:00 to join them
     # assumes Cartesian 2-D plot
@@ -50,11 +55,13 @@ def wrapped_line(ra,de): #numpy arrays
     return ra_new, de_new
 
 def get_ra_dec(starname,identity,ra,de):
+    """get radec/lb of a given star using starname (designation i think)"""
     #print(list(identity))
     index = list(identity).index(starname.strip())
     return ra[index], de[index]
 
 def handleconsjson(jsonfile,txtfile,img,config:Config):
+    """reads the constellation json file"""
     namelist=[]
     ralist=[]
     declist=[]

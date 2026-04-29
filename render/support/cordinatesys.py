@@ -2,6 +2,7 @@ from .configsys import Config
 from .custdataclasses import cord
 
 def cordstoxy(starcords:cord,config:Config):
+    """converts radec or lb coords to xy coords in image"""
     bounds=config.bounds
     xrang=bounds[1].x-bounds[0].x
     yrang=bounds[1].y-bounds[0].y
