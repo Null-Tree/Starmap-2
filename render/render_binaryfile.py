@@ -26,7 +26,6 @@ def main():
     print("Handeling Constellations")
     constellations.handleconsjson(config.cons.jsonfile,config.cons.txtfile,img,config)
 
-
     # open all stars and load binary
     targetfilepath=r"render/static/data/binaries/all_stars"
     with open(targetfilepath, 'rb') as allsbfile:
